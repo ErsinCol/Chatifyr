@@ -46,7 +46,7 @@ app.use("/delete", deleteRouter)
 /** Create HTTP server. */
 const server = http.createServer(app)
 /** Create socket connection */
-global.io = socketio.listen(server) //  port starts listening on the server, sockets starts listening for events happening on that port as well
+global.io = socketio.listen(server) //  port starts listening on the server, sockets starts listening for events happening on that port as well >>> global.io is equivalent to windows object in browser 
 global.io.on('connection', WebSockets.connection)
 /** Listen on provided port, on all network interfaces. */
 server.listen(port)
