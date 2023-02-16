@@ -7,9 +7,17 @@ import { encode } from '../middlewares/jwt.mjs'
 const router = express.Router()
 
 router
-    .post('/login/:userID', encode, (req, res, next) => {})
+    .post('/login/:userId', encode, (req, res, next) => { // because moving forward they'll need a token to access the rest of chat APIs
+        return res.status(200).json({
+            success: true,
+            authorization: req.authToken
+        })
+    })
 
 export default router
+
+
+
 
 
 
