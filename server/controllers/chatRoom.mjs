@@ -26,6 +26,9 @@ export default {
             return res.status(500).json({success: false, error: error})
         }
     },
-    postMessage: async (req, res) => {},
+    // Create a message in chat room
+    postMessage: async (req, res) => {
+
+    },
     markConversationReadByRoomId: async (req, res) => {}
 }
