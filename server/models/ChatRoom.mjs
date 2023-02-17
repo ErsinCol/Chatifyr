@@ -19,7 +19,8 @@ const chatRoomSchema = new mongoose.Schema({
     versionKey: false,
     collection: 'chatrooms'
 })
-
+// chatInitiator: the user who created the chat room, userIds: array of users, type: type of chatroom
+//  either returning an existing chatroom document or creating a new one
 chatRoomSchema.statics.initiateChat = async function(userIds, type, chatInitiator){
     try{
         const avaliableRoom = await this.findOne({
