@@ -1,7 +1,10 @@
 import http from 'http'
 import express from 'express'
-import logger from 'morgan' 
+import morgan from 'morgan'
 import cors from 'cors'
+import path from 'path'
+import fs from 'fs'
+import { fileURLToPath } from 'url'
 import { Server as SocketServer } from 'socket.io';
 
 // mongo connection
@@ -25,7 +28,10 @@ const port = 3000 // process.env.PORT
 
 app.set('port', port)
 
-app.use(logger('dev'))
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const accessLogStream = fs.createWriteStream(path.join(__dirname, './' , 'logs/network', 'access.log'), { flags: 'a' })
+app.use(morgan('tiny', {stream:accessLogStream} ))
+
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
